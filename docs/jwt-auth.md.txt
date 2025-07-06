@@ -1,0 +1,7 @@
+# JWT Auth Feature
+
+This branch implements:
+- BCrypt hashing for passwords
+- JWT generation using email
+- /login API
+- Token validation logic
