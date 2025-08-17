@@ -5,73 +5,49 @@ refactor : refactor the code for existing features
 
 
 FEATURES I AM GONNA TARGET : 
-Project Scope (Backend-Focused E-Commerce Order Management System)
-1. Core Features
 
-API Endpoints
+# E-Commerce Order Management System - Project Checklist ✅
 
-User Service: signup, login, profile
+## Core Features
+- [ ] API Endpoints  
+  - [ ] Create Order  
+  - [ ] Update Order  
+  - [ ] Cancel Order  
+  - [ ] Get Order Details  
+  - [ ] List All Orders  
 
-Product Service: add/list/update products
+- [ ] Data Storage and Management  
+  - [ ] SQL Database (e.g., MySQL/PostgreSQL) for structured data (orders, payments, users)  
+  - [ ] NoSQL Database (e.g., MongoDB) for product catalog and logs  
+  - [ ] Database schema design and indexing  
 
-Order Service: create, view, cancel orders
+- [ ] Authentication and Authorization  
+  - [ ] JWT-based Authentication  
+  - [ ] Role-based Access Control (Admin, Customer)  
+  - [ ] User Registration & Login  
 
-Data Storage & Management
+## Performance Optimization
+- [ ] Implement caching (e.g., Redis) for frequently accessed data  
+- [ ] Optimize database queries (indexes, pagination)  
+- [ ] Asynchronous processing for long-running tasks  
 
-MySQL for relational data (users, orders, transactions)
+## Error Handling & Logging
+- [ ] Centralized error handling (Global Exception Handler)  
+- [ ] Logging (e.g., SLF4J + Logback)  
+- [ ] Store logs in NoSQL (MongoDB/Elasticsearch)  
 
-MongoDB for flexible/non-relational data (product metadata, logs)
+## Security
+- [ ] Input validation (sanitize user input)  
+- [ ] Protect against SQL injection  
+- [ ] Secure headers and HTTPS enforcement  
+- [ ] Rate limiting for APIs  
 
-Caching with Redis for faster reads (e.g., product catalog, user sessions)
+## Advanced Features (to stand out 🚀)
+- [ ] Microservices Communication  
+  - [ ] REST → Kafka → REST workflow  
+  - [ ] Event-driven order status updates  
 
-2. Cross-Cutting Concerns
-
-Authentication & Authorization
-
-JWT-based authentication
-
-Role-based access control (admin, customer)
-
-Performance Optimization
-
-Database indexing
-
-Redis caching
-
-Asynchronous processing (via Kafka where needed)
-
-Error Handling & Logging
-
-Centralized error handler in each microservice
-
-Structured logs (JSON) → could be viewed via ELK stack later
-
-Security
-
-Input validation and sanitization
-
-Protect against SQL injection, XSS
-
-Secure JWT handling and password hashing (BCrypt)
-
-3. Advanced / Resume-Boosting Elements
-
-Microservices Communication
-
-REST for synchronous calls
-
-Kafka for asynchronous events (e.g., when an order is placed → notify inventory service)
-
-Containerization & Deployment
-
-Dockerize all microservices
-
-Use Docker Compose for local development
-
-(Optional) Deploy simple Kubernetes manifests later
-
-Scalability & Maintainability
-
-Clear separation of services (User, Product, Order)
-
-API gateway (Spring Cloud Gateway or simple NGINX) for routing requests
+- [ ] Containerization & Deployment  
+  - [ ] Dockerize each microservice  
+  - [ ] Use Docker Compose for local development  
+  - [ ] Kubernetes basics (deploy services to a cluster)  
