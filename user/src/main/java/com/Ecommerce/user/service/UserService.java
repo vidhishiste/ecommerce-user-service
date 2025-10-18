@@ -7,7 +7,9 @@ import com.Ecommerce.user.model.User;
 import com.Ecommerce.user.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class UserService {
 
@@ -21,16 +23,17 @@ public class UserService {
 
   // Register user
   public UserResponse registerUser(UserRequest request) {
-
+    log.info("request recieved : {}",request);
     if (userRepository.findByEmail(request.getEmail()).isPresent()) {
-      return new UserResponse("User already registered with ", request.getEmail(), request.getUsername());
+      return new UserResponse("User already registered with ", request.getEmail());
     }
     User user = new User();
     user.setUsername(request.getUsername());
     user.setEmail(request.getEmail());
     user.setPassword(passwordEncoder.encode(request.getPassword()));
+    user.setMobile(request.getMobile());
     userRepository.save(user);
-    return new UserResponse("User registered successfully", user.getEmail(), user.getUsername());
+    return new UserResponse("User registered successfully", user.getEmail());
   }
 
   // Verify email (mock)
@@ -59,9 +62,8 @@ public class UserService {
   public UserResponse getProfile(String email) {
     User user =
         userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
-    return new UserResponse("Profile fetched", user.getEmail(), user.getUsername());
+    return new UserResponse("Profile fetched", user.getEmail());
   }
-
   // Update profile
   //    public UserResponse updateProfile(String email, UserUpdateRequest request) {
   //        User user = userRepository.findByEmail(email)

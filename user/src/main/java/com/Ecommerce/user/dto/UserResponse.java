@@ -11,5 +11,4 @@ public class UserResponse {
 
   private String message; // e.g., "User registered successfully"
   private String email; // registered user's email
-  private String username; // registered user's username
 }
