@@ -4,6 +4,7 @@ import com.Ecommerce.user.dto.LoginRequest;
 import com.Ecommerce.user.dto.UserRequest;
 import com.Ecommerce.user.dto.UserResponse;
 import com.Ecommerce.user.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +19,14 @@ public class UserController {
   }
 
   @PostMapping("/register")
-  public ResponseEntity<UserResponse> register(@RequestBody UserRequest request) {
+  public ResponseEntity<UserResponse> register(@Valid @RequestBody UserRequest request) {
     return ResponseEntity.ok(userService.registerUser(request));
   }
+//
+//  @PostMapping("/forgotPassword")
+//  public ResponseEntity<UserResponse> forgotPassword(@RequestBody UserRequest request) {
+//    return ResponseEntity.ok(userService.forgotPassword(request));
+//  }
 
   @GetMapping("/verify-email")
   public ResponseEntity<String> verifyEmail(@RequestParam String email) {
